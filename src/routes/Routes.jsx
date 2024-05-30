@@ -16,6 +16,8 @@ import UpdateItem from '../pages/Dashboard/UpdateItem/UpdateItem';
 import Payments from '../pages/Dashboard/Payments/Payment';
 import Payment from '../pages/Dashboard/Payments/Payment';
 import PaymentHistory from '../pages/Dashboard/Payments/PaymentHistory/PaymentHistory';
+import AdminHome from '../pages/Dashboard/AdminHome/AdminHome';
+import UserHome from '../pages/Dashboard/UserHome/UserHome';
 
 export const routes = createBrowserRouter([
   {
@@ -90,6 +92,14 @@ export const routes = createBrowserRouter([
       {
         path: 'payment-history',
         element: <PaymentHistory></PaymentHistory>,
+      },
+      {
+        path: 'admin-home',
+        element: <AdminHome></AdminHome>,
+      },
+      {
+        path: 'user-home',
+        element: <UserHome></UserHome>,
       },
     ],
   },

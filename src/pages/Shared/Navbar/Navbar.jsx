@@ -2,15 +2,15 @@ import { useContext } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../../providers/AuthProvider';
 import { FaShoppingCart } from 'react-icons/fa';
-
 import Swal from 'sweetalert2';
 import useCart from '../../../hooks/useCart';
+import useAdmin from '../../../hooks/useAdmin';
 
 const Navbar = () => {
   const { user, logOut } = useContext(AuthContext);
   const navigate = useNavigate();
   const { cart } = useCart(); // Destructure cart and isLoading
-
+  const [isAdmin] = useAdmin();
   const navOptions = (
     <>
       <li>
@@ -19,9 +19,17 @@ const Navbar = () => {
       <li>
         <Link to='/menu'>Menu</Link>
       </li>
-      <li>
-        <Link to='/secret'>Secret</Link>
-      </li>
+
+      {user && isAdmin && (
+        <li>
+          <Link to='/dashboard/admin-home'>Dashboard</Link>
+        </li>
+      )}
+      {user && !isAdmin && (
+        <li>
+          <Link to='/dashboard/user-home'>Dashboard</Link>
+        </li>
+      )}
       <li>
         <Link to='/order-food'>Order Food</Link>
       </li>
